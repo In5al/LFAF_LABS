@@ -2,12 +2,16 @@ from src.grammer.grammer import *
 from src.automaton.automaton import *
 # Define the regular grammar
 grammar = {
-    "S": ["aP", "bQ"],
-    "P": ["bP", "cP","dQ","e"],
-    "Q": ["eQ", "fQ","a"]
+    "S": ["aD"],
+    "D": ["bE"],
+    "E": ["cF", "dL"],
+    "F": ["dD"],
+    "L":["aL","bL","c"]
+
 }
-grammar1 = [("S","P","a"),("S","Q","b"),("P","P","b"),("P","P","c"),("P","Q","d"),
-            ("P","","e"),("Q","Q","e"),("Q","Q","e"),("Q","Q","f"),("Q","","a")]
+grammar1 = [("S","D","a"),("D","E","b"),("E","F","c"),("E","L","d"),("F","D","d"),
+            ("L","L","a"),("L","L","b"),("L","","c")]
+
 
 
 automaton = create_automaton(grammar1)
@@ -19,5 +23,5 @@ for _ in range(5):
     print(word)
 print("")
 
-accepts(automaton,"ace")
+accepts(automaton,"abdbc")
 accepts(automaton,"ohno")
